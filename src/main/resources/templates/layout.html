@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      >    
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />        
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title th:text="${@environment.getProperty('application.message')}">Welcome</title>
+        <!-- AdminLTE CSS with vendor -->
+        <link th:href="@{/css/modular-admin.css}" href="" rel="stylesheet" />    
+    </head>
+    <body>
+        <div class="container">
+            <th:block th:if="${message instanceof T(net.technoage.springboot.saml.util.mvc.Message)}">
+                <div th:replace="fragment/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${message.args[0]})})">
+
+                </div>
+            </th:block>             
+            <div layout:fragment="content">
+            </div>
+        </div>
+        <script src="/js/modular-admin.js"></script>
+    </body>
+</html>

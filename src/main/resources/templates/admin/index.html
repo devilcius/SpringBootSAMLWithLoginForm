@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+    layout:decorator="layout"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+    >
+    <head>
+        <title>Admin landing page</title>
+    </head>
+    <body layout:fragment="content" >
+        <div class="jumbotron">
+            <h1 class="display-4">Spring Boot SAML and Form Login</h1>
+            <p class="lead"><strong>Welcome <span th:text="${#authentication.principal.user.name}"></span>! </strong>This is an admin's landing page</p>
+            <hr class="my-4" />
+            <p>It uses SAML service provider and database user authentication</p>
+            <h3>Existing users:</h3>
+            <ul>
+                <li th:each="user, stat : ${users}">
+                    <strong th:text="${user.name}"></strong>
+                </li>
+            </ul>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" th:href="@{/security/logout}"  role="button">Logout</a>
+            </p>
+        </div>
+    </body>
+</html>

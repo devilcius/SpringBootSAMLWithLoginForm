@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+    layout:decorator="layout"
+    >
+    <head>
+        <title th:text="#{user.login}">Log in</title>    
+    </head>
+    <body class="login" layout:fragment="content" >
+        <div th:if="${error.isPresent()}"  th:text="#{user.invalid_login}" class="login-alert alert alert-danger">
+            Invalid username or password.
+        </div>
+        <div class="auth">
+            <div class="auth-container">
+                <div class="card">
+                    <header class="auth-header">
+                        <h1 class="auth-title">                            
+                            Spring Boot SAML and Form Login
+                        </h1>
+                    </header>
+                    <div class="auth-content">
+                        <p class="text-center" th:text="#{general.sign_in}">LOGIN</p>
+                        <form action="login" method="post" th:action="@{/security/login}" >
+                            <div class="form-group">
+                                <label for="username" th:text="#{user.username}" >Username</label>
+                                <input type="text" class="form-control" name="username" id="username" th:placeholder="#{user.username}" required="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="password" th:text="#{user.password}" >Password</label>
+                                <input type="password" class="form-control" name="password"  th:placeholder="#{user.password}" id="password" placeholder="Password" required="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="remember-me">
+                                    <input name="remember-me" id="remember-me" checked="checked"  value="1" type="checkbox" />
+                                    <span th:text="#{user.remember_me}"></span>
+                                </label>
+                                <a class="forgot-btn pull-right" th:href="@{/user/password-recovery}"  th:text="#{user.password.forgot}" href="#">I forgot my password</a>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-block btn-primary" th:text="#{user.login}" >Log in</button>  
+                            </div>
+                        </form>
+                        <form action="/saml/login?disco=true" method="get">
+                            <input type="hidden" name="idp"  th:value="${identityProvider}" />
+                            <button type="submit" class="btn btn-info-outline btn-sm float-right">
+                                <i class="fa fa-handshake-o"></i> SSO Login
+                            </button>
+                        </form>                        
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </body>
+</html>

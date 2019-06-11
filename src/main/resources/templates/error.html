@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      layout:decorator="layout">
+    <head>
+        <title>Error page</title>
+        <meta charset="utf-8" />
+    </head>
+    <body layout:fragment="content">
+        <article class="content error-500-page">
+            <section class="section">
+                <div class="error-card">
+                    <div class="error-title-block">
+                        <h1 class="error-title" th:utext="${status}" >500</h1>
+                        <h2 class="error-sub-title" > 
+                            <strong th:utext="${error}">Internal Server Error.</strong>
+                        </h2>
+                    </div>
+                    <div class="error-container">
+                        <p th:utext="${message}" >message</p>
+                        <a class="btn btn-primary" th:href="@{/}">
+                            <i class="fa fa-angle-left"></i> 
+                            <span th:text="#{general.back_to_home_page}" >Back to Dashboard </span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </body>    
+</html>
