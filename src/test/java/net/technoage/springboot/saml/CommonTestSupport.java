@@ -13,7 +13,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.providers.ExpiringUsernameAuthenticationToken;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.test.context.TestPropertySource;
 
+@TestPropertySource(properties = {
+    "technoage.saml.entity-id=net:technoage:sp",
+})
 public class CommonTestSupport {
 
     public static final String USER_NAME = "user";

@@ -20,6 +20,7 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableMBeanExport;
@@ -104,6 +105,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements I
     private Timer backgroundTaskTimer;
     private MultiThreadedHttpConnectionManager multiThreadedHttpConnectionManager;
 
+    @Value("${technoage.saml.entity-id}")
+    private String entityId;    
+    
     public void init()
     {
         this.backgroundTaskTimer = new Timer(true);
@@ -313,7 +317,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements I
     public MetadataGenerator metadataGenerator()
     {
         MetadataGenerator metadataGenerator = new MetadataGenerator();
-        metadataGenerator.setEntityId("net:technoage:sp");
+        metadataGenerator.setEntityId(entityId);
         metadataGenerator.setExtendedMetadata(extendedMetadata());
         metadataGenerator.setIncludeDiscoveryExtension(false);
         metadataGenerator.setKeyManager(keyManager());
