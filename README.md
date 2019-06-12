@@ -9,7 +9,7 @@ It combines two types of authentication: through SAML or a database backed form 
 **SSOCircle** ([ssocircle.com](http://www.ssocircle.com/en/portfolio/publicidp/)) is used as public Identity Provider for test purpose.
 
 
-Inspired in Vincenzo de Notaris' [project](github.com/vdenotaris/spring-boot-security-saml-sample).
+Inspired in Vincenzo de Notaris' [project](http://github.com/vdenotaris/spring-boot-security-saml-sample).
 
 ### References
 
