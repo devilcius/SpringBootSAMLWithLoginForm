@@ -1,7 +1,6 @@
 package net.technoage.springboot.saml.controller;
 
 import java.util.Collection;
-import javax.transaction.Transactional;
 import net.technoage.springboot.saml.service.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -39,7 +38,6 @@ public class HomeController
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/admin", method = GET)
-    @Transactional
     public String admin(Model model)
     {
         model.addAttribute("users", this.userService.getAll());

@@ -1,6 +1,8 @@
 HELP.md
 /target/
 !.mvn/wrapper/maven-wrapper.jar
+*.bk
+*.old
 
 ### STS ###
 .apt_generated
@@ -24,6 +26,7 @@ HELP.md
 /nbdist/
 /.nb-gradle/
 /build/
+nbactions.xml
 
 ### VS Code ###
 .vscode/

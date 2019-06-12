@@ -59,6 +59,7 @@ public class SecurityController
             String identityProvider = metadata.getDefaultIDP();
             model.addAttribute("identityProvider", identityProvider);
             model.addAttribute("error", error);
+            
             return "security/login";
         } else {
             LOGGER.warn("The current user is already logged.");
