@@ -27,8 +27,9 @@ Inspired in Vincenzo de Notaris' [project](http://github.com/vdenotaris/spring-b
 
 ### Run
 
-`mvn clean package' 
-`mvn spring-boot:run' 
+`mvn clean package`
+
+`mvn spring-boot:run`
 
 
 
