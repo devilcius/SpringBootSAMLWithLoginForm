@@ -1,15 +1,14 @@
 # Spring Boot Sample SAML 2.0 Service Provider and Form Login
-====================
+
 ## Project description
 
 This project is a sample implementation of a **SAML 2.0 Service Provider**, completely built on **Spring Framework**. 
 It combines two types of authentication: through SAML or a database backed form login.
 
 
-**SSOCircle** ([ssocircle.com](http://www.ssocircle.com/en/portfolio/publicidp/)) is used as public Identity Provider for test purpose.
+**SSOCircle** ([ssocircle.com](http://www.ssocircle.com/en/portfolio/publicidp/)) is used as public Identity Provider for test purpose. You need a (free) account to test it.
 
-
-Inspired in *Vincenzo de Notaris' project* ([github.com/vdenotaris/spring-boot-security-saml-sample))work.
+**Form login** uses an in-memory database. Credentials for admin user are: admin/1231456. And for _simple_ user: user/123456
 
 ### References
 
@@ -27,8 +26,12 @@ Inspired in *Vincenzo de Notaris' project* ([github.com/vdenotaris/spring-boot-s
 
 ### Run
 
-`mvn clean package' 
-`mvn spring-boot:run' 
+`mvn clean package`
 
+`mvn spring-boot:run`
+
+---
+
+Inspired in Vincenzo de Notaris' [project](http://github.com/vdenotaris/spring-boot-security-saml-sample).
 
 
