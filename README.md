@@ -10,6 +10,19 @@ It combines two types of authentication: through SAML or a database backed form 
 
 **Form login** uses an in-memory database. Credentials for admin user are: admin/1231456. And for _simple_ user: user/123456
 
+### How to create key store files
+Under `/src/main/resources/saml` directory, first create the jks file:
+
+```bash
+keytool -genkey -alias technoage -keyalg RSA -keystore samlKeystore.jks -keysize 2048 -storepass 5a4t-AA
+```
+Answer the questions, when asked 'Enter key password' just press return.
+
+Then import the sso circle certificates with the provided script `update-sso-circle-certifcate.sh`
+
+### How to create a service provider metada in sso circle
+First create an account in https://idp.ssocircle.com/sso, then, under 'Manage Metadata>Add new Service Provider', fill the form. For 'SAML Metadata Information of your SP', run the application and enter the content of the XML returned by http://localhost:8080/saml/metadata. Finally update the key `technoage.saml.entity-id` in `application.properties` with the FQDN of the service provider your entered in the ssocircle.com form.
+
 ### References
 
 #### Spring Boot

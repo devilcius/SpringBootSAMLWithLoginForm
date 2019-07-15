@@ -112,6 +112,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements I
     @Value("${technoage.saml.metadata-url}")
     private String metadataUrl;       
     
+    @Value("${technoage.saml.idp.metadata.requires-signature}")
+    private Boolean requiresSignature;
+
+    @Value("${technoage.saml.key-store.file}")
+    private String keystoreFileName;
+
+    @Value("${technoage.saml.key-store.pwd}")
+    private String keystorePassword;    
+    
     public void init()
     {
         this.backgroundTaskTimer = new Timer(true);
@@ -235,11 +244,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements I
     {
         DefaultResourceLoader loader = new DefaultResourceLoader();
         Resource storeFile = loader
-                .getResource("classpath:/saml/samlKeystore.jks");
-        String storePass = "buhbuh121";
+                .getResource("classpath:/saml/" + this.keystoreFileName);
+        String storePass = this.keystorePassword;
         Map<String, String> passwords = new HashMap<>();
-        passwords.put("milo", "buhbuh121");
-        String defaultKey = "milo";
+        passwords.put("technoage", this.keystorePassword);
+        String defaultKey = "technoage";
         
         return new JKSKeyManager(storeFile, storePass, passwords, defaultKey);
     }
@@ -305,7 +314,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements I
         ExtendedMetadataDelegate extendedMetadataDelegate
                 = new ExtendedMetadataDelegate(httpMetadataProvider, extendedMetadata());
         extendedMetadataDelegate.setMetadataTrustCheck(true);
-        extendedMetadataDelegate.setMetadataRequireSignature(false);
+        extendedMetadataDelegate.setMetadataRequireSignature(this.requiresSignature);
         backgroundTaskTimer.purge();
         
         return extendedMetadataDelegate;

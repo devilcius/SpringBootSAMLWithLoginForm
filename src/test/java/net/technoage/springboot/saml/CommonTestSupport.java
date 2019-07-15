@@ -17,6 +17,9 @@ import org.springframework.test.context.TestPropertySource;
 
 @TestPropertySource(properties = {
     "technoage.saml.entity-id=net:technoage:sp",
+    "technoage.saml.idp.metadata.requires-signature=false",
+    "technoage.saml.key-store.file=samlKeystore.jks",
+    "technoage.saml.key-store.pwd=5a4t-AA",
     "technoage.saml.metadata-url=https://idp.ssocircle.com/idp-meta.xml",
 })
 public class CommonTestSupport {
